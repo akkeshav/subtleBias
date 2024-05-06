@@ -1,0 +1,10 @@
+transformers
+tqdm
+datasets
+openai
+numpy
+seaborn
+openpyxl
+scipy
+requests
+sentence-transformers
