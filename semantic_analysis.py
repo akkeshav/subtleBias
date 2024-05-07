@@ -31,7 +31,7 @@ def save_raw_data(task_name, model):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Subtle bias")
     parser.add_argument('--model', type=str, required=True, choices=['gpt4', 'llama', 'mixtral'], help='choose model')
-    parser.add_argument('--task', type=str, required=True, choices=['gpt4', 'llama', 'mixtral'], help='choose model')
+    parser.add_argument('--task', type=str, required=True, choices=['gpt4', 'llama', 'mixtral'], help='choose task')
 
     model = parser.parse_args().model
     task = parser.parse_args().task

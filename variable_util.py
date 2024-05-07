@@ -248,3 +248,19 @@ categories = ["base", "white", "black", "asian", "straight", "queer", "man", "wo
 all_themes = ["stars", "rights", "drones", "memory", "life", "castle", "joy", "family", "mountains", "fear", "sun",
               "freedom", "social media", "soul", "knight", "fashion", "rain", "ghost", "unicorn", "globalisation",
               "innovation", "galaxy", "truth", "camera", "fate", "emperor", "friends", "trees", "money", "witch"]
+
+tasks = ["dialogue_duel", "very_short_story", "short_poem", "interview_script", "dance", "song", "paint", "game",
+         "haiku", "puzzle", "trivia", "blog"]
+
+dict_themes = {"Ethical": ["truth", "freedom", "rights"],
+               "Social": ["fashion", "friends", "family"],
+               "Technological": ["social media", "drones", "camera"],
+               "Existential": ["life", "soul", "fate"],
+               "Mythological": ["ghost", "witch", "unicorn"],
+               "Cosmological": ["stars", "sun", "galaxy"],
+               "Ecological": ["trees", "rain", "mountains"],
+               "Psychological": ["fear", "joy", "memory"],
+               "Historical": ["knight", "castle", "emperor"],
+               "Economical": ["globalisation", "innovation", "money"]
+               }
+

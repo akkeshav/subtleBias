@@ -94,6 +94,36 @@ def get_similarity_score(text1, text2):
     return round(util.cos_sim(embedding1, embedding2)[0][0].item(), 4)
 
 
+def get_semantic_analysis_by_category(task, model):
+    identity = variable_util.categories
+    identity_temp = ["white", "black", "asian", "straight", "queer", "man", "woman", "non-binary person", "category"]
+
+    dict_final = {cat: [] for cat in identity_temp}
+    directory = f"data/{task}/{model}/"
+    filename = "semantic.xlsx"
+
+    for key, value in variable_util.dict_themes.items():
+        dict_internal = {cat: [] for cat in identity}
+        file_path = os.path.join(directory, filename)
+        df = pd.read_excel(file_path)
+
+        for index, row in df.iterrows():
+            for cat in identity:
+                if row[cat + "_theme"] in value:
+                    dict_internal[cat].append(row[cat + "_semantic"])
+
+        for cat in identity:
+            array = dict_internal[cat]
+            dict_final[cat].append(round(sum(array) / len(array), 2))
+
+        dict_final["category"].append(key)
+
+    filename = "category_sematic_analysis.xlsx"
+    file_path = os.path.join(directory, filename)
+    df = pd.DataFrame(dict_final)
+    df.to_excel(file_path, index=False)
+
+
 def get_evaluation(task, model_evaluatee, model_evaluator):
     directory = f"data/{task}/{model_evaluatee}"
     filename = "raw.xlsx"
@@ -172,3 +202,37 @@ def get_answer_text(response, value):
         number = ""
     reversed_dict = {v: k for k, v in value.items()}
     return reversed_dict.get(number)
+
+
+def get_evaluation_analysis(task, evaluatee_model, evaluator_model):
+    dict_res = {}
+    category = {"races", "gender", "sexual_orientation"}
+    for cat in category:
+        dict_res[cat] = []
+
+    get_evaluation_preference(task, dict_res, category, evaluatee_model, evaluator_model)
+    directory = f"data/{task}/{evaluatee_model}/"
+    filename = f"evaluation_analysis_{evaluator_model}.xlsx"
+    file_path = os.path.join(directory, filename)
+    df = pd.DataFrame(dict_res)
+    df.to_excel(file_path, index=True)
+
+
+def get_evaluation_preference(task, dict_cat, category, evaluatee_model, evaluator_model):
+    directory = f"data/{task}/{evaluatee_model}"
+    filename = f"evaluation_{evaluator_model}.xlsx"
+    file_path = os.path.join(directory, filename)
+    df = pd.read_excel(file_path, engine='openpyxl')
+    for col in df.columns:
+        if df[col].dtype == 'object':
+            df[col] = df[col].str.lower()
+
+    for cat in category:
+        value_counts = df[cat].value_counts()
+        percentages = ((value_counts / len(df)) * 100).round(2)
+        result = percentages.reset_index().apply(lambda row: f"{row['index']}: {row[cat]}%", axis=1)
+        single_row_result = ', '.join(result)
+        print(single_row_result)
+        print(task + "---" + cat)
+        dict_cat[cat].append(single_row_result)
+        dict_cat[cat + "_task"].append(task)
