@@ -118,7 +118,7 @@ def get_semantic_analysis_by_category(task, model):
 
         dict_final["category"].append(key)
 
-    filename = "category_sematic_analysis.xlsx"
+    filename = "topic_sematic_analysis.xlsx"
     file_path = os.path.join(directory, filename)
     df = pd.DataFrame(dict_final)
     df.to_excel(file_path, index=False)

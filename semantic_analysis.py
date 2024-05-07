@@ -38,3 +38,4 @@ if __name__ == "__main__":
 
     save_raw_data(task, model)
     utils.save_analysis_semantic(task, model)
+    utils.get_semantic_analysis_by_category(task, model)
