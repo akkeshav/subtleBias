@@ -1,5 +1,9 @@
 # Subtle Bias
 
+![](./main_figure_final.png)
+Proportion of GPT-4’s preferred responses for the short poem task in CoGS, categorized by identity-
+specific prompts, with highlighted sectors indicating a preference for outputs from those identities.
+
 ## Setup
 
 - Go to the project directory and use the following command
