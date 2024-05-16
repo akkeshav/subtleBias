@@ -88,3 +88,4 @@ my_project/
 - For each task, we are calculating cosine similarity per model.
 - Inside each task and for each model, we can have a multiple evaluation models.
 - Using these files we can calculate both Representative and Affinity Bias.
+- Please find the details in the link given for the paper.
