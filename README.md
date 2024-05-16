@@ -82,3 +82,9 @@ my_project/
 │   ├── task_2 
 │       ├──model_1 ...
 │       ├──model_2 ...
+```
+
+## Analysis
+- For each task, we are calculating cosine similarity per model.
+- Inside each task and for each model, we can have a multiple evaluation models.
+- Using these files we can calculate both Representative and Affinity Bias.
