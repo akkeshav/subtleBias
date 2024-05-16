@@ -234,3 +234,38 @@ def get_evaluation_preference(task, dict_cat, category, evaluatee_model, evaluat
         single_row_result = ', '.join(result)
         dict_cat[cat].append(single_row_result)
         dict_cat[cat + "_task"].append(task)
+
+
+def get_percentage(text, target):
+    pattern = r'\b{}\b\s*:\s*([\d.]+)%'.format(re.escape(target))
+    match = re.search(pattern, text)
+
+    if match:
+        percentage = float(match.group(1))
+        return percentage
+    else:
+        0
+
+
+def get_percentage_per_identity(task, evaluatee_model, evaluator_model):
+    cat_map = {"races": ["white", "black", "asian"], "sexual_orientation": ["straight", "queer"],
+               "gender": ["man", "woman", "non-binary person"]}
+
+    categories = ["white", "black", "asian", "straight", "queer", "man", "woman", "non-binary person", "task"]
+
+    directory = f"data/{task}/{evaluatee_model}/"
+    filename = f"evaluation_analysis_{evaluator_model}.xlsx"
+    file_path = os.path.join(directory, filename)
+    df = pd.read_excel(file_path, engine='openpyxl')
+    dict_final = {cat: [] for cat in categories}
+    for index, row in df.iterrows():
+        for key, value in cat_map.items():
+            for identity in value:
+                percent = get_percentage(row[key], identity)
+                dict_final[identity].append(percent)
+        dict_final["task"].append(row["races_task"])
+
+    filename = f"evaluation_analysis_{evaluator_model}_per_identity.xlsx"
+    file_path = os.path.join(directory, filename)
+    df = pd.DataFrame(dict_final)
+    df.to_excel(file_path, index=True)

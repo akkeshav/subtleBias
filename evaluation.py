@@ -16,3 +16,4 @@ if __name__ == "__main__":
 
     utils.get_evaluation(task, evaluatee_model, evaluator_model)
     utils.get_evaluation_analysis(task, evaluatee_model, evaluator_model)
+    utils.get_percentage_per_identity(task, evaluatee_model, evaluator_model)
