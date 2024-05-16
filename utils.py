@@ -232,7 +232,5 @@ def get_evaluation_preference(task, dict_cat, category, evaluatee_model, evaluat
         percentages = ((value_counts / len(df)) * 100).round(2)
         result = percentages.reset_index().apply(lambda row: f"{row['index']}: {row[cat]}%", axis=1)
         single_row_result = ', '.join(result)
-        print(single_row_result)
-        print(task + "---" + cat)
         dict_cat[cat].append(single_row_result)
         dict_cat[cat + "_task"].append(task)
