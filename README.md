@@ -17,6 +17,9 @@ associated with being white, straight, and men. Furthermore, our investigation o
 evaluative patterns within each model, akin to `bias fingerprints'. This trend is also seen in human evaluators, 
 highlighting a complex interplay between human and machine bias perceptions.
 
+## Paper Link
+https://arxiv.org/abs/2405.14555
+
 ## Setup
 
 - Go to the project directory and use the following command
