@@ -1,4 +1,4 @@
-# Subtle Bias
+# Subtle Biases Need Subtler Measures: Dual Metrics for Evaluating Representative and Affinity Bias in Large Language Models
 
 ![](./main_figure_final.png)
 Proportion of GPT-4’s preferred responses for the short poem task in CoGS, categorized by identity-
