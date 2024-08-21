@@ -18,7 +18,7 @@ evaluative patterns within each model, akin to `bias fingerprints'. This trend i
 highlighting a complex interplay between human and machine bias perceptions.
 
 ## Paper Link
-https://arxiv.org/abs/2405.14555
+https://aclanthology.org/2024.acl-long.23/
 
 ## Setup
 
